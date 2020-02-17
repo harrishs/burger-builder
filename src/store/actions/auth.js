@@ -29,11 +29,14 @@ export const auth = (email, password, isSignup) => {
       password: password,
       returnSecureToken: true
     };
+
+    const key = process.env.REACT_APP_FIREBASE;
     let url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyD2O3UehlcHdWnKBgS-A0dPLhy7BOh2a3k";
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + key;
     if (!isSignup) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD2O3UehlcHdWnKBgS-A0dPLhy7BOh2a3k";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+        key;
     }
     axios
       .post(url, authData)

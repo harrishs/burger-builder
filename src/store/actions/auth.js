@@ -46,26 +46,6 @@ export const setAuthRedirect = path => {
   };
 };
 
-export const authCheckState = () => {
-  return dispatch => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      dispatch(logout());
-    } else {
-      const expTime = new Date(localStorage.getItem("expDate"));
-      if (expTime > new Date()) {
-        const userId = localStorage.getItem("userId");
-        dispatch(authSuccess(token, userId));
-        dispatch(
-          checkAuthTimeout(expTime.getSeconds() - new Date().getSeconds())
-        );
-      } else {
-        dispatch(logout());
-      }
-    }
-  };
-};
-
 export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
@@ -100,5 +80,25 @@ export const auth = (email, password, isSignup) => {
         console.log(err);
         dispatch(authFail(err.response.data.error));
       });
+  };
+};
+
+export const authCheckState = () => {
+  return dispatch => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      dispatch(logout());
+    } else {
+      const expTime = new Date(localStorage.getItem("expTime"));
+      if (expTime <= new Date()) {
+        dispatch(logout());
+      } else {
+        const userId = localStorage.getItem("userId");
+        dispatch(authSuccess(token, userId));
+        dispatch(
+          checkAuthTimeout((expTime.getTime() - new Date().getTime()) / 1000)
+        );
+      }
+    }
   };
 };

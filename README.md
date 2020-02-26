@@ -4,7 +4,7 @@ Mobile friendly web app that allows users to create account and place orders for
 
 ## Final Product
 
-![Application in action]()
+![Application in action](https://github.com/harrishs/burger-builder/blob/master/screen/preview.gif)
 
 ## Dependencies
 

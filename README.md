@@ -1,6 +1,7 @@
 # Burger Builder
 
-Mobile friendly web app that allows users to create account and place orders for customized burgers.  Built using React, Redux and Firebase.
+Mobile friendly web app that allows users to create account and place orders for customized burgers. Built using React, Redux and Firebase.
+Deployed at: https://react-burger-93ee8.firebaseapp.com
 
 ## Final Product
 
@@ -18,4 +19,3 @@ Mobile friendly web app that allows users to create account and place orders for
 
 - To run the app use `npm run local`
 - Install all dependencies (using the `npm install` command).
-
